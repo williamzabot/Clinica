@@ -1,6 +1,7 @@
 package com.williamzabot.clinicakotlin.services
 
 import com.williamzabot.clinicakotlin.dtos.SpecialtyDTO
+import com.williamzabot.clinicakotlin.dtos.toDoctorDTO
 import com.williamzabot.clinicakotlin.dtos.toSpecialtyDTO
 import com.williamzabot.clinicakotlin.entities.Specialty
 import com.williamzabot.clinicakotlin.repositories.SpecialtyRepository
@@ -30,12 +31,12 @@ class SpecialtyService(
 
     @Transactional(readOnly = true)
     fun findDoctors(id: Long): SpecialtyDTO {
-        val specialty = repository.findById(id).getOrNull()
+        val specialty: Specialty? = repository.findById(id).getOrNull()
         return SpecialtyDTO(
                 specialty?.id ?: 0,
                 specialty?.name,
                 specialty?.description,
-                specialty?.doctors ?: emptyList()
+                specialty?.doctors?.map { it.toDoctorDTO() } ?: emptyList()
         )
 
     }
