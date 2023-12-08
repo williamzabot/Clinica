@@ -1,0 +1,64 @@
+
+    create table tb_doctors (
+       id bigint not null auto_increment,
+        city varchar(255),
+        complement varchar(255),
+        neighborhood varchar(255),
+        number varchar(255),
+        state varchar(255),
+        street varchar(255),
+        zip_code varchar(255),
+        crm varchar(255),
+        email varchar(255),
+        name varchar(255),
+        via_health_insurance bit not null,
+        specialty_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_employees (
+       id bigint not null auto_increment,
+        cpf varchar(255),
+        email varchar(255),
+        name varchar(255),
+        address_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_patients (
+       id bigint not null auto_increment,
+        cpf varchar(255),
+        email varchar(255),
+        name varchar(255),
+        register_date date,
+        address_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_specialties (
+       id bigint not null auto_increment,
+        description TEXT,
+        name varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    alter table tb_doctors 
+       add constraint FKkghmd7xkmj1mp4sq8k6am933u 
+       foreign key (specialty_id) 
+       references tb_specialties (id);
+
+    alter table tb_employees 
+       add constraint FKk4bwjcwkh6wn16kti5f5necbf 
+       foreign key (address_id) 
+       references tb_doctors (id);
+
+    alter table tb_patients 
+       add constraint FK4honin6us7ulqcp8s9yethgi 
+       foreign key (address_id) 
+       references tb_doctors (id);
+insert into tb_specialties (name, description) VALUES ('Oftalmologia', 'Especialidade médica relacionada a visão');
+insert into tb_specialties (name, description) VALUES ('Endrocrinologia', 'Especialidade médica relacionado aos hormônios e metabolismo');
+INSERT INTO tb_doctors (name, email, crm, via_health_insurance, specialty_id) VALUES ('Fábio Knost', 'fknost@gmail.com', 'CRM 21458 RS', true, 1);
+INSERT INTO tb_doctors (name, email, crm, via_health_insurance, specialty_id) VALUES ('Beatriz Pacheco', 'biapacheco@gmail.com', 'CRM 11254 RS', true, 2);
+INSERT INTO tb_doctors (name, email, crm, via_health_insurance, specialty_id) VALUES ('Silvia Botelho', 'drasilviabotelho@gmail.com', 'CRM 16225 RS', false, 2);
+INSERT INTO tb_doctors (name, email, crm, via_health_insurance, specialty_id) VALUES ('Flavio Moreira', 'drmoreira@gmail.com', 'CRM 12232 RS', false, 1);
