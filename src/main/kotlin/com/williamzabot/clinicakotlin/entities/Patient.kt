@@ -13,7 +13,7 @@ class Patient() : Serializable {
     var name: String? = null
     var email: String? = null
     var cpf: String? = null
-    var registerDate: LocalDate? = null
+    var registerDate: LocalDate = LocalDate.now()
 
     @ManyToOne
     @JoinColumn(name = "address_id")
@@ -21,11 +21,11 @@ class Patient() : Serializable {
 
     constructor(
             id: Long,
-            name: String,
-            email: String,
-            cpf: String,
+            name: String?,
+            email: String?,
+            cpf: String?,
             registerDate: LocalDate,
-            address: Address
+            address: Address?
     ) : this() {
         this.id = id
         this.name = name

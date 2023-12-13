@@ -7,11 +7,11 @@ import java.time.LocalDate
 
 data class PatientDTO(
         val id: Long,
-        val name: String,
-        val email: String,
-        val cpf: String,
+        val name: String?,
+        val email: String?,
+        val cpf: String?,
         val registerDate: LocalDate = LocalDate.now(),
-        val addressId: Long
+        val addressId: Long?
 ) : Serializable
 
 fun Patient.toPatientDTO() = PatientDTO(
@@ -20,7 +20,7 @@ fun Patient.toPatientDTO() = PatientDTO(
         email = email,
         cpf = cpf,
         registerDate = registerDate,
-        addressId = address.id
+        addressId = address?.id
 )
 
 fun PatientDTO.toPatient() = Patient(
@@ -29,5 +29,5 @@ fun PatientDTO.toPatient() = Patient(
         email = email,
         cpf = cpf,
         registerDate = registerDate,
-        address = Address(addressId)
+        address = Address(addressId ?: 0)
 )

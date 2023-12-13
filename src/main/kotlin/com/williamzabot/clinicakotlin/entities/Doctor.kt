@@ -20,11 +20,11 @@ class Doctor() : Serializable {
 
     constructor(
             id: Long,
-            name: String,
-            email: String,
-            crm: String,
-            viaHealthInsurance: Boolean,
-            specialty: Specialty? = null
+            name: String?,
+            email: String?,
+            crm: String?,
+            viaHealthInsurance: Boolean?,
+            specialty: Specialty?
     ) : this() {
         this.id = id
         this.name = name

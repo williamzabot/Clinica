@@ -6,10 +6,10 @@ import java.io.Serializable
 
 data class DoctorDTO(
         val id: Long,
-        val name: String,
-        val email: String,
-        val crm: String,
-        val viaHealthInsurance: Boolean,
+        val name: String?,
+        val email: String?,
+        val crm: String?,
+        val viaHealthInsurance: Boolean?,
         val specialtyId: Long
 ) : Serializable
 
@@ -28,5 +28,5 @@ fun Doctor.toDoctorDTO() = DoctorDTO(
         email = email,
         crm = crm,
         viaHealthInsurance = viaHealthInsurance,
-        specialtyId = specialty.id
+        specialtyId = specialty?.id ?: 0
 )

@@ -15,9 +15,9 @@ class HealthInsurance() : Serializable {
 
     constructor(
             id: Long,
-            name: String,
-            rate: Double,
-            observation: String
+            name: String?,
+            rate: Double?,
+            observation: String?
     ) : this() {
         this.id = id
         this.name = name

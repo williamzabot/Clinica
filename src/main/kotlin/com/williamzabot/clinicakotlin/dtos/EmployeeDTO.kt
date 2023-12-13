@@ -6,11 +6,11 @@ import java.io.Serializable
 
 data class EmployeeDTO(
         var id: Long,
-        var name: String,
-        var email: String,
-        var cpf: String,
-        var addressId: Long
+        var name: String?,
+        var email: String?,
+        var cpf: String?,
+        var addressId: Long?
 ) : Serializable
 
-fun Employee.toEmployeeDTO() = EmployeeDTO(id, name, email, cpf, address.id)
-fun EmployeeDTO.toEmployee() = Employee(id, name, email, cpf, Address(addressId))
+fun Employee.toEmployeeDTO() = EmployeeDTO(id, name, email, cpf, address?.id)
+fun EmployeeDTO.toEmployee() = Employee(id, name, email, cpf, Address(addressId ?: 0))

@@ -19,10 +19,10 @@ class Employee() : Serializable {
 
     constructor(
             id: Long = 0,
-            name: String,
-            email: String,
-            cpf: String,
-            address: Address? = null
+            name: String?,
+            email: String?,
+            cpf: String?,
+            address: Address?
     ) : this() {
         this.id = id
         this.name = name
