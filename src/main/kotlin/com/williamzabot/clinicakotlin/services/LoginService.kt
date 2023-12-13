@@ -4,7 +4,6 @@ import com.williamzabot.clinicakotlin.dtos.LoginDTO
 import com.williamzabot.clinicakotlin.dtos.toLogin
 import com.williamzabot.clinicakotlin.dtos.toLoginDTO
 import com.williamzabot.clinicakotlin.entities.Login
-import com.williamzabot.clinicakotlin.repositories.AuthorityRepository
 import com.williamzabot.clinicakotlin.repositories.LoginRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -15,8 +14,6 @@ import kotlin.jvm.optionals.getOrNull
 class LoginService(
         @Autowired
         private val loginRepository: LoginRepository,
-        @Autowired
-        private val authorityRepository: AuthorityRepository
 ) {
 
     @Transactional(readOnly = true)
