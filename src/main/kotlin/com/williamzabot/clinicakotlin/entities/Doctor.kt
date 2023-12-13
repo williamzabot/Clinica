@@ -5,15 +5,36 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "tb_doctors")
-data class Doctor(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long = 0,
-        var name: String,
-        var email: String,
-        var crm: String,
-        var viaHealthInsurance: Boolean,
-        @ManyToOne
-        @JoinColumn(name = "specialty_id")
-        var specialty: Specialty
-): Serializable
+class Doctor() : Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0
+    var name: String? = null
+    var email: String? = null
+    var crm: String? = null
+    var viaHealthInsurance: Boolean? = null
+
+    @ManyToOne
+    @JoinColumn(name = "specialty_id")
+    var specialty: Specialty? = null
+
+    constructor(
+            id: Long,
+            name: String,
+            email: String,
+            crm: String,
+            viaHealthInsurance: Boolean,
+            specialty: Specialty? = null
+    ) : this() {
+        this.id = id
+        this.name = name
+        this.email = email
+        this.crm = crm
+        this.viaHealthInsurance = viaHealthInsurance
+        this.specialty = specialty
+    }
+
+    constructor(id: Long) : this() {
+        this.id = id
+    }
+}

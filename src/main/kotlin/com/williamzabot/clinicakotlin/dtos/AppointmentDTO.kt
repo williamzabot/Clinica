@@ -1,18 +1,18 @@
 package com.williamzabot.clinicakotlin.dtos
 
-import com.williamzabot.clinicakotlin.entities.Appointment
+import com.williamzabot.clinicakotlin.entities.*
 import java.io.Serializable
 import java.time.Instant
 
 data class AppointmentDTO(
         var id: Long,
-        val registerDate: Instant,
+        val registerDate: Instant = Instant.now(),
         val appointmentDate: Instant,
         val value: Double,
-        val patient: PatientDTO,
-        val doctor: DoctorDTO,
-        val healthInsurance: HealthInsuranceDTO,
-        val employee: EmployeeDTO
+        val patientId: Long,
+        val doctorId: Long,
+        val healthInsuranceId: Long,
+        val employeeId: Long
 ) : Serializable
 
 fun AppointmentDTO.toAppointment() = Appointment(
@@ -20,10 +20,10 @@ fun AppointmentDTO.toAppointment() = Appointment(
         registerDate = registerDate,
         appointmentDate = appointmentDate,
         value = value,
-        patient = patient.toPatient(),
-        doctor = doctor.toDoctor(),
-        healthInsurance = healthInsurance.toHealthInsurance(),
-        employee = employee.toEmployee()
+        patient = Patient(patientId),
+        doctor = Doctor(doctorId),
+        healthInsurance = HealthInsurance(healthInsuranceId),
+        employee = Employee(employeeId)
 )
 
 fun Appointment.toAppointmentDTO() = AppointmentDTO(
@@ -31,8 +31,8 @@ fun Appointment.toAppointmentDTO() = AppointmentDTO(
         registerDate = registerDate,
         appointmentDate = appointmentDate,
         value = value,
-        patient = patient.toPatientDTO(),
-        doctor = doctor.toDoctorDTO(),
-        healthInsurance = healthInsurance.toHealthInsuranceDTO(),
-        employee = employee.toEmployeeDTO()
+        patientId = patient.id,
+        doctorId = doctor.id,
+        healthInsuranceId = healthInsurance.id,
+        employeeId = employee.id
 )
