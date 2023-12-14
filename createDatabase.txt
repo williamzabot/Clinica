@@ -56,6 +56,154 @@
        add constraint FK4honin6us7ulqcp8s9yethgi 
        foreign key (address_id) 
        references tb_doctors (id);
+
+    create table tb_addresses (
+       id bigint not null auto_increment,
+        city varchar(255),
+        complement varchar(255),
+        neighborhood varchar(255),
+        number varchar(255),
+        state varchar(255),
+        street varchar(255),
+        zip_code varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_agreements (
+       id bigint not null auto_increment,
+        name varchar(255),
+        observation varchar(255),
+        rate double precision,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_appointments (
+       id bigint not null auto_increment,
+        appointment_date datetime(6),
+        register_date datetime(6),
+        value double precision not null,
+        doctor_id bigint,
+        employee_id bigint,
+        health_insurance_id bigint,
+        patient_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_authorities (
+       id bigint not null auto_increment,
+        role varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_doctors (
+       id bigint not null auto_increment,
+        crm varchar(255),
+        email varchar(255),
+        name varchar(255),
+        via_health_insurance bit,
+        specialty_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_employees (
+       id bigint not null auto_increment,
+        cpf varchar(255),
+        email varchar(255),
+        name varchar(255),
+        address_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_invoices (
+       id bigint not null auto_increment,
+        date datetime(6),
+        value double precision not null,
+        appointment_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_login (
+       id bigint not null auto_increment,
+        email varchar(255),
+        password varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_login_authorities (
+       id_login bigint not null,
+        id_authority bigint not null,
+        primary key (id_login, id_authority)
+    ) engine=InnoDB;
+
+    create table tb_patients (
+       id bigint not null auto_increment,
+        cpf varchar(255),
+        email varchar(255),
+        name varchar(255),
+        register_date date,
+        address_id bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table tb_specialties (
+       id bigint not null auto_increment,
+        description TEXT,
+        name varchar(255),
+        primary key (id)
+    ) engine=InnoDB;
+
+    alter table tb_login 
+       add constraint UK_9ch1gl03k5c2s5trfqmmo42hg unique (email);
+
+    alter table tb_appointments 
+       add constraint FKb0qdpew52uip80intssrwvnq4 
+       foreign key (doctor_id) 
+       references tb_doctors (id);
+
+    alter table tb_appointments 
+       add constraint FK37vsl3j7hf9579djd2h0k72of 
+       foreign key (employee_id) 
+       references tb_employees (id);
+
+    alter table tb_appointments 
+       add constraint FK7urnfausnjoegd5hldfd5qhr7 
+       foreign key (health_insurance_id) 
+       references tb_agreements (id);
+
+    alter table tb_appointments 
+       add constraint FK20xr2k8cgpf3hmse6tcw1i642 
+       foreign key (patient_id) 
+       references tb_patients (id);
+
+    alter table tb_doctors 
+       add constraint FKkghmd7xkmj1mp4sq8k6am933u 
+       foreign key (specialty_id) 
+       references tb_specialties (id);
+
+    alter table tb_employees 
+       add constraint FKlpddfeehvyonec2bjk19fqwwt 
+       foreign key (address_id) 
+       references tb_addresses (id);
+
+    alter table tb_invoices 
+       add constraint FKgjnr2ryg33ksskj66djiqybno 
+       foreign key (appointment_id) 
+       references tb_appointments (id);
+
+    alter table tb_login_authorities 
+       add constraint FKf9t3hrtm11k7384niy8r7yv6p 
+       foreign key (id_authority) 
+       references tb_authorities (id);
+
+    alter table tb_login_authorities 
+       add constraint FKf911u5u33dh7kc3l2t7ftkrjm 
+       foreign key (id_login) 
+       references tb_login (id);
+
+    alter table tb_patients 
+       add constraint FK2q0ddec6am2gmqtnx804xc1h2 
+       foreign key (address_id) 
+       references tb_addresses (id);
 insert into tb_specialties (name, description) VALUES ('Oftalmologia', 'Especialidade médica relacionada a visão');
 insert into tb_specialties (name, description) VALUES ('Endrocrinologia', 'Especialidade médica relacionado aos hormônios e metabolismo');
 INSERT INTO tb_doctors (name, email, crm, via_health_insurance, specialty_id) VALUES ('Fábio Knost', 'fknost@gmail.com', 'CRM 21458 RS', true, 1);

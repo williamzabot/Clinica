@@ -9,7 +9,7 @@ import javax.persistence.*
 data class Appointment(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long,
+        var id: Long = 0,
         val registerDate: Instant,
         val appointmentDate: Instant,
         val value: Double,

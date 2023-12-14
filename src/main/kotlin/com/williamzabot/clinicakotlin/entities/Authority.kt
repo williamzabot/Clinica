@@ -8,6 +8,6 @@ import javax.persistence.*
 data class Authority(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long,
+        var id: Long = 0,
         var role: String
 ) : Serializable

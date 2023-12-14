@@ -7,7 +7,7 @@ import javax.persistence.*
 data class Login(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long,
+        var id: Long = 0,
         @Column(unique = true)
         val email: String,
         val password: String,
