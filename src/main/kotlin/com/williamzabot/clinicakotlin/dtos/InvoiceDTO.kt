@@ -5,11 +5,11 @@ import java.time.Instant
 
 data class InvoiceDTO(
         val id: Long,
-        val value: Double,
+        val rate: Double,
         val date: Instant,
         val appointment: AppointmentDTO
 )
 
-fun Invoice.toInvoiceDTO() = InvoiceDTO(id, value, date, appointment.toAppointmentDTO())
-fun InvoiceDTO.toInvoice() = Invoice(id, value, date, appointment.toAppointment())
+fun Invoice.toInvoiceDTO() = InvoiceDTO(id, rate, date, appointment.toAppointmentDTO())
+fun InvoiceDTO.toInvoice() = Invoice(id, rate, date, appointment.toAppointment())
 

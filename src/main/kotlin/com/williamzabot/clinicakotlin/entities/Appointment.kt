@@ -12,7 +12,7 @@ data class Appointment(
         var id: Long = 0,
         val registerDate: Instant,
         val appointmentDate: Instant,
-        val value: Double,
+        val rate: Double,
         @ManyToOne
         @JoinColumn(name = "patient_id")
         val patient: Patient,

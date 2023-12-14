@@ -10,7 +10,7 @@ data class Invoice(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long = 0,
-        val value: Double,
+        val rate: Double,
         val date: Instant,
         @OneToOne
         @JoinColumn(name = "appointment_id")
