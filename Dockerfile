@@ -1,13 +1,12 @@
-# Use uma imagem base do OpenJDK 17
+# Use uma imagem base do Java 17
 FROM openjdk:latest
 
-# Diretório de trabalho dentro do contêiner
-WORKDIR /app
-
-# Copie o jar construído para o contêiner
-RUN ls
-RUN pwd
+# Copia o arquivo JAR da sua aplicação para o contêiner
 COPY clinicakotlin.jar /app/clinicakotlin.jar
 
-# Comando para executar a aplicação quando o contêiner iniciar
-CMD ["java", "-jar", "app.jar"]
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Comando para executar a aplicação quando o contêiner for iniciado
+CMD ["java", "-jar", "clinicakotlin.jar"]
+
