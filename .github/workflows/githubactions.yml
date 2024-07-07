@@ -21,6 +21,9 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
+      - name: Verify JAR file
+        run: ls -l clinicakotlin.jar
+
   unit-tests:
     needs: build
     runs-on: ubuntu-latest
