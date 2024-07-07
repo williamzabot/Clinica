@@ -1,16 +1,13 @@
-# Use uma imagem base do Java 17
-FROM openjdk:latest
+# Use the official Gradle image with JDK 17 as the base image
+FROM gradle:7.4.1-jdk17 AS builder
 
-# Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Adiciona comandos para imprimir informações e listar diretórios
-RUN echo "Current directory" && pwd
-RUN echo "Listing files in /app: " && ls -l
+COPY . .
 
-# Copia o arquivo JAR da sua aplicação para o contêiner
-COPY clinicakotlin.jar /app/clinicakotlin.jar
+RUN chmod +x ./gradlew
+RUN ./gradlew clean build -x test
 
-# Comando para executar a aplicação quando o contêiner for iniciado
+EXPOSE 8080
+
 CMD ["java", "-jar", "clinicakotlin.jar"]
-

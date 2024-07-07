@@ -12,6 +12,13 @@ tasks.jar {
 	archiveFileName.set("clinicakotlin.jar")
 	val customDirectory = file("$projectDir/")
 	destinationDirectory.set(customDirectory)
+	manifest {
+		attributes["Main-Class"] = "com.williamzabot.clinicakotlin.ClinicaKotlinApplication"
+	}
+}
+
+tasks.bootJar {
+	mainClass.set("com.williamzabot.clinicakotlin.ClinicaKotlinApplication")
 }
 
 group = "com.williamzabot"
