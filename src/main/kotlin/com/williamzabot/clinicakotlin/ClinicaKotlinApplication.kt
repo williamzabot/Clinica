@@ -4,9 +4,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ClinicaKotlinApplication
+class ClinicaKotlinApplication {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            runApplication<ClinicaKotlinApplication>(*args)
+        }
 
-fun main(args: Array<String>) {
-    runApplication<ClinicaKotlinApplication>(*args)
+    }
 }
+
+
+
+
 
