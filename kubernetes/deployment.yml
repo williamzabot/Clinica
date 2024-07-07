@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kotlin-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: clinicakotlin
+  template:
+    metadata:
+      labels:
+        app: clinicakotlin
+    spec:
+      containers:
+        - name: clinicakotlin
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/clinicakotlin:latest
+          ports:
+            - containerPort: 8080
