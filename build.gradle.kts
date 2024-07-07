@@ -8,6 +8,12 @@ plugins {
 	kotlin("plugin.jpa") version "1.8.22"
 }
 
+tasks.jar {
+	archiveFileName.set("clinicakotlin.jar")
+	val customDirectory = file("$projectDir/")
+	destinationDirectory.set(customDirectory)
+}
+
 group = "com.williamzabot"
 version = "0.0.1"
 
