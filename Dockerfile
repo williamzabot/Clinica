@@ -5,6 +5,8 @@ FROM openjdk:latest
 WORKDIR /app
 
 # Copie o jar construído para o contêiner
+RUN ls
+RUN pwd
 COPY clinicakotlin.jar /app/clinicakotlin.jar
 
 # Comando para executar a aplicação quando o contêiner iniciar
