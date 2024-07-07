@@ -2,7 +2,7 @@ package com.williamzabot.clinicakotlin.entities
 
 import java.time.Instant
 import java.time.LocalDate
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "tb_invoices")

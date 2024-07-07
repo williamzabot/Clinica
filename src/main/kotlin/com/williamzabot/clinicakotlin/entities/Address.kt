@@ -1,7 +1,7 @@
 package com.williamzabot.clinicakotlin.entities
 
+import jakarta.persistence.*
 import java.io.Serializable
-import javax.persistence.*
 
 @Entity
 @Table(name = "tb_addresses")

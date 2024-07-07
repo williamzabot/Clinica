@@ -2,7 +2,7 @@ package com.williamzabot.clinicakotlin.entities
 
 import java.io.Serializable
 import java.time.Instant
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "tb_appointments")
