@@ -1,5 +1,5 @@
 # Use uma imagem base do OpenJDK para JDK 17 (temurin)
-FROM adoptopenjdk/openjdk17:alpine-slim
+FROM openjdk:17-alpine
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
