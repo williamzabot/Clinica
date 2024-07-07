@@ -1,5 +1,5 @@
 # Use a imagem do OpenJDK 17 com Alpine Linux como base
-FROM openjdk:17-alpine
+FROM openjdk:latest
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
