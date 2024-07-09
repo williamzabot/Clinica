@@ -16,7 +16,7 @@ tasks.jar {
         attributes["Main-Class"] = "com.williamzabot.clinicakotlin.ClinicaKotlinApplication"
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    // To add all of the dependencies
+    // To add all dependencies
     from(sourceSets.main.get().output)
     dependsOn(configurations.runtimeClasspath)
     from({
@@ -46,6 +46,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     runtimeOnly("com.h2database:h2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")

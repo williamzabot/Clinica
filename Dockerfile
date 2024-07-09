@@ -8,4 +8,4 @@ COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
-CMD ["java", "-Dspring.profiles.active=dev", "-jar", "clinicakotlin.jar"]
+CMD ["java", "-jar", "clinicakotlin.jar"]
