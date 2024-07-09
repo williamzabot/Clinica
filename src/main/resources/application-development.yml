@@ -56,7 +56,7 @@ spring:
     username: sa
     password:
     type: com.zaxxer.hikari.HikariDataSource
-    data: data.sql
+    data: import.sql
     hikari:
       pool-name: ps-demo
       maximum-pool-size: 20
