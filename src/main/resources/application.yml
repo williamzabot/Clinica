@@ -1,26 +1,5 @@
 spring:
   profiles:
     active: development
-  devtools:
-    add-properties: false
-  main:
-    allow-circular-references: true
   application:
     name: clinicakotlin
-
-management:
-  security:
-    enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  health:
-    show-details: always
-
-
-jlapp:
-  openapi:
-    dev-url: http://localhost:8070
-    hom-url: http://localhost:8070
-    prod-url: https://localhost:8070
