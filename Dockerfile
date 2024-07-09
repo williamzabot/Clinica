@@ -8,4 +8,6 @@ COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
+EXPOSE 9001
+
 CMD ["java", "-jar", "clinicakotlin.jar"]
