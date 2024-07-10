@@ -13,7 +13,7 @@ tasks.jar {
     val customDirectory = file("$projectDir/")
     destinationDirectory.set(customDirectory)
     manifest {
-        attributes["Main-Class"] = "com.williamzabot.clinicakotlin.ClinicaKotlinApplication"
+        attributes["Main-Class"] = "com.williamzabot.clinicakotlin.ClinicaKotlinApplicationKt"
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     // To add all dependencies
